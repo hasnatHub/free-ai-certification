@@ -1,8 +1,7 @@
-# AI Certificate Explorer
+# Free AI Certificates
 
 🚀 **Your Gateway to Free AI Expertise**
 
-## Description
 The AI Certificate Explorer is a single-page, interactive web application designed to help users discover free online certifications, courses, and digital badges in Artificial Intelligence (AI), Machine Learning (ML), Data Science, Deep Learning, Generative AI, and LLM Security. This community-driven resource empowers learners to enhance their AI skills and earn verifiable credentials without financial barriers.
 
 ## Table of Contents
@@ -29,24 +28,22 @@ A comprehensive list of free AI, ML, Data Science, and related certifications in
 
 | **Domain** | **Provider** | **Course/Certification Name** | **Free Credential?** | **Key Topics** | **Duration** | **Link** |
 |------------|--------------|-------------------------------|----------------------|----------------|--------------|----------|
-| AI/ML/Data Science | Google Cloud | Build and Deploy Machine Learning Solutions on Vertex AI | Yes (Digital Badge) | Vertex AI, AutoML, Custom Training, Model Deployment | 7 hours | [Link](#) |
-| AI/ML/Data Science | IBM | Artificial Intelligence Fundamentals | Yes (Digital Badge) | AI concepts, ML, Deep Learning, Chatbots, AI Ethics | 10 hours | [Link](#) |
-| AI/ML/Data Science | IBM | Data Fundamentals | Yes (Digital Badge) | Data analytics, methodologies, tools, Python | 7 hours | [Link](#) |
-| AI/ML/Data Science | IBM | AI for Everyone: Master the Basics | Yes (Digital Badge) | AI applications, ML, Deep Learning, Neural Networks, Gen AI | 4 weeks (1-2 hrs/week) | [Link](#) |
-| Deep Learning | Great Learning | Introduction to Deep Learning | Yes (Completion Certificate) | Deep Learning, Neural Networks, CNN, RNN, Python | 3.5 hours | [Link](#) |
-| Generative AI & LLMs | IBM | Generative AI: Introduction and Applications | Yes (Digital Badge) | Generative AI, ChatGPT, Prompt Engineering, LLMs | 1-4 weeks | [Link](#) |
-| Generative AI & LLMs | IBM | Generative AI in Action | Yes (Digital Badge) | Gen AI principles, Prompt Engineering, Python libraries | 5+ hours | [Link](#) |
-| Generative AI & LLMs | Salesforce | Salesforce Certified Agentforce Specialist | Yes (Free Exam until March 2025) | Agentforce, Prompt Engineering, RAG, Fine-tuning | Exam | [Link](#) |
-| Generative AI & LLMs | Google Cloud | Introduction to Generative AI | No (Audit Only) | Generative AI, Application Development, AI, ML Methods | 1-4 weeks | [Link](#) |
-| Generative AI & LLMs | DeepLearning.AI | ChatGPT Prompt Engineering for Developers | No (Completion Email Only) | Prompt Engineering, LLMs for summarizing, inferring | 1.5 hours | [Link](#) |
-| Generative AI & LLMs | Cohere | LLM University | No (Not mentioned) | LLM basics, architecture, fine-tuning, applications | Self-paced | [Link](#) |
-| Generative AI & LLMs | Hugging Face | NLP Course | No (Not mentioned) | NLP basics, LLMs, Transformers, text generation | Self-paced | [Link](#) |
-| LLM Security & AI Governance | Securiti Education | AI Security & Governance Certification | Yes (Completion Certificate) | Gen AI risks, Global AI laws, LLM firewalls | 2-2.5 hours | [Link](#) |
-| Other AI-related | OpenCV University | Free OpenCV Course | Yes (Official Certification) | Image/Video manipulation, Object/Face detection | 3 hours | [Link](#) |
-| Other AI-related | Great Learning | Reinforcement Learning with Python | Yes (Completion Certificate) | RL introduction, Q-learning, Python implementation | 8.25 hours | [Link](#) |
-| Other AI-related | Great Learning | Introduction to Natural Language Processing | Yes (Completion Certificate) | NLP basics, Text Mining, Chatbots, Sentiment Analysis | 4.5 hours | [Link](#) |
-
-**Note**: Replace placeholder `[Link](#)` with actual course URLs.
+| AI/ML/Data Science | Google Cloud | Build and Deploy Machine Learning Solutions on Vertex AI | Yes (Digital Badge) | Vertex AI, AutoML, Custom Training, Model Deployment | 7 hours | [Link](https://www.cloudskillsboost.google/course_templates/684) |
+| AI/ML/Data Science | IBM | Artificial Intelligence Fundamentals | Yes (Digital Badge) | AI concepts, ML, Deep Learning, Chatbots, AI Ethics | 10 hours | [Link](https://skillsbuild.org/students/course-catalog/artificial-intelligence) |
+| AI/ML/Data Science | IBM | Data Fundamentals | Yes (Digital Badge) | Data analytics, methodologies, tools, Python | 7 hours | [Link](https://skillsbuild.org/students/course-catalog/data-science) |
+| AI/ML/Data Science | IBM | AI for Everyone: Master the Basics | Yes (Digital Badge) | AI applications, ML, Deep Learning, Neural Networks, Gen AI | 4 weeks (1-2 hrs/week) | [Link](https://www.edx.org/learn/artificial-intelligence/ibm-ai-for-everyone-master-the-basics) |
+| Deep Learning | Great Learning | Introduction to Deep Learning | Yes (Completion Certificate) | Deep Learning, Neural Networks, CNN, RNN, Python | 3.5 hours | [Link](https://www.mygreatlearning.com/academy/learn-for-free/courses/introduction-to-deep-learning) |
+| Generative AI & LLMs | IBM | Generative AI: Introduction and Applications | Yes (Digital Badge) | Generative AI, ChatGPT, Prompt Engineering, LLMs | 1-4 weeks | [Link](https://www.edx.org/learn/artificial-intelligence/generative-ai-introduction-and-applications) |
+| Generative AI & LLMs | IBM | Generative AI in Action | Yes (Digital Badge) | Gen AI principles, Prompt Engineering, Python libraries | 5+ hours | [Link](https://skillsbuild.org/students/course-catalog/artificial-intelligence) |
+| Generative AI & LLMs | Salesforce | Salesforce Certified Agentforce Specialist | Yes (Free Exam until March 2025) | Agentforce, Prompt Engineering, RAG, Fine-tuning | Exam | [Link](https://trailhead.salesforce.com/credentials/agentforcespecialist) |
+| Generative AI & LLMs | Google Cloud | Introduction to Generative AI | No (Audit Only) | Generative AI, Application Development, AI, ML Methods | 1-4 weeks | [Link](https://www.coursera.org/learn/introduction-to-generative-ai) |
+| Generative AI & LLMs | DeepLearning.AI | ChatGPT Prompt Engineering for Developers | No (Completion Email Only) | Prompt Engineering, LLMs for summarizing, inferring | 1.5 hours | [Link](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/) |
+| Generative AI & LLMs | Cohere | LLM University | No (Not mentioned) | LLM basics, architecture, fine-tuning, applications | Self-paced | [Link](https://cohere.com/llmu) |
+| Generative AI & LLMs | Hugging Face | NLP Course | No (Not mentioned) | NLP basics, LLMs, Transformers, text generation | Self-paced | [Link](https://huggingface.co/course/chapter0/1) |
+| LLM Security & AI Governance | Securiti Education | AI Security & Governance Certification | Yes (Completion Certificate) | Gen AI risks, Global AI laws, LLM firewalls | 2-2.5 hours | [Link](https://education.securiti.ai/certifications/ai-governance/) |
+| Other AI-related | OpenCV University | Free OpenCV Course | Yes (Official Certification) | Image/Video manipulation, Object/Face detection | 3 hours | [Link](https://opencv.org/university/free-opencv-course/) |
+| Other AI-related | Great Learning | Reinforcement Learning with Python | Yes (Completion Certificate) | RL introduction, Q-learning, Python implementation | 8.25 hours | [Link](https://www.mygreatlearning.com/academy/learn-for-free/courses/reinforcement-learning-with-python) |
+| Other AI-related | Great Learning | Introduction to Natural Language Processing | Yes (Completion Certificate) | NLP basics, Text Mining, Chatbots, Sentiment Analysis | 4.5 hours | [Link](https://www.mygreatlearning.com/nlp/free-courses) |
 
 ## Roadmap
 Future enhancements to make AI Certificate Explorer the go-to resource for free AI education:
