@@ -20,8 +20,7 @@ The AI Certificate Explorer is a single-page, interactive web application design
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices.
 
 ## Live Demo
-Explore the live demo hosted on GitHub Pages:  
-[AI Certificate Explorer](https://balavenkatesh3322.github.io/free-ai-certification/)
+Explore the live website hosted on GitHub Pages:  [Website](https://balavenkatesh3322.github.io/free-ai-certification/)
 
 ## Certifications List
 A comprehensive list of free AI, ML, Data Science, and related certifications included in the explorer:
