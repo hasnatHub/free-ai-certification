@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Guide to Free AI Certifications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony -->
+    <!-- Application Structure Plan: The application is designed as a single-page interactive dashboard, moving away from the linear report structure for better usability. The core is a filterable grid of certification "cards." This task-oriented design allows users to immediately find relevant learning opportunities based on their specific needs (e.g., finding a "Digital Badge for Generative AI"). The user flow is: Land -> Explore Visual Insights -> Filter -> View Results -> See Details. This structure prioritizes user exploration and discovery over passive reading. Sections for high-level insights (charts) and actionable advice ("Your Learning Journey") are included to provide comprehensive value beyond just a list. This architecture is chosen because it transforms a static document into a dynamic tool, making the information more accessible and actionable. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Comprehensive list of all certifications (Table 2) -> Goal: Allow users to find specific certs -> Viz/Presentation: Interactive grid of cards with key info, with a modal for full details. -> Interaction: Users click filter buttons (Domain, Type, Provider) which dynamically updates the card grid. -> Justification: Far more efficient and user-friendly for exploration than a static table. -> Library/Method: Vanilla JS for filtering and DOM manipulation, Tailwind for styling.
+        - Report Info: Different types of credentials (Badges, Certificates, etc.) -> Goal: Show the distribution of free offerings -> Viz/Presentation: Donut Chart -> Interaction: Hover to see details. Clicking a segment filters the main grid. -> Justification: Provides a quick, high-level visual summary of the credential landscape. -> Library/Method: Chart.js.
+        - Report Info: Various course providers (Google, IBM, etc.) -> Goal: Compare the volume of offerings from each provider -> Viz/Presentation: Horizontal Bar Chart -> Interaction: Hover for exact count. Clicking a bar filters the main grid. -> Justification: Makes it easy to see which companies are the biggest players in free AI education. -> Library/Method: Chart.js.
+        - Report Info: Advice on building a portfolio (Section IX) -> Goal: Make advice actionable and engaging -> Viz/Presentation: A styled, multi-step "Learning Journey" section with icons. -> Interaction: Static, but visually broken down for readability. -> Justification: Converts a dense text block into a more inviting and motivational guide. -> Library/Method: HTML/CSS with Tailwind.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container { position: relative; width: 100%; max-width: 450px; margin-left: auto; margin-right: auto; height: 320px; max-height: 400px; }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+        .card-enter { animation: card-enter 0.5s ease-out forwards; }
+        @keyframes card-enter {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .modal-bg-enter { animation: modal-bg-enter 0.3s ease-out forwards; }
+        @keyframes modal-bg-enter { 0% { opacity: 0; } 100% { opacity: 1; } }
+        .modal-content-enter { animation: modal-content-enter 0.3s ease-out forwards; }
+        @keyframes modal-content-enter { 0% { opacity: 0; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
+        .nav-link { transition: color 0.2s; }
+        .nav-link:hover { color: #2563eb; }
+        .filter-btn { transition: all 0.2s; }
+        .filter-btn-active { background-color: #3b82f6; color: white; }
+        .filter-btn-active:hover { background-color: #2563eb; }
+        .filter-btn:not(.filter-btn-active) { background-color: #e5e7eb; color: #4b5563; }
+        .filter-btn:not(.filter-btn-active):hover { background-color: #d1d5db; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div id="app">
+        <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200">
+            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        <span>A</span>
+                    </div>
+                    <h1 class="text-xl font-bold text-slate-800">AI Certificate Explorer</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#insights" class="nav-link text-slate-600 font-medium">Insights</a>
+                    <a href="#explorer" class="nav-link text-slate-600 font-medium">Explorer</a>
+                    <a href="#journey" class="nav-link text-slate-600 font-medium">Your Journey</a>
+                </div>
+            </nav>
+        </header>
+
+        <main class="container mx-auto px-6 py-12">
+            <section class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Your Gateway to Free AI Expertise</h2>
+                <p class="max-w-3xl mx-auto text-lg text-slate-600">
+                    The rapid evolution of AI, Machine Learning, and Data Science has created an unprecedented demand for skilled professionals. This interactive guide consolidates the best free online certifications, courses, and digital badges to help you acquire industry-relevant knowledge and verifiable credentials without financial barriers.
+                </p>
+            </section>
+
+            <section id="insights" class="mb-20">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-slate-900">The Learning Landscape at a Glance</h3>
+                    <p class="max-w-2xl mx-auto text-slate-600 mt-2">Before you dive in, here's a visual summary of the free offerings available. These charts provide insights into the types of credentials you can earn and who the major providers are. You can click on chart segments to automatically filter the results below.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-semibold text-center mb-4 text-slate-800">Offerings by Credential Type</h4>
+                        <div class="chart-container">
+                            <canvas id="credentialTypeChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-semibold text-center mb-4 text-slate-800">Top Free Providers by Volume</h4>
+                        <div class="chart-container">
+                            <canvas id="providerChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="explorer" class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="text-center mb-8">
+                    <h3 class="text-3xl font-bold text-slate-900">Explore Free Certifications</h3>
+                     <p class="max-w-3xl mx-auto text-slate-600 mt-2">Use the filters below to find the perfect course for your needs. The "Truly Free" credentials are digital badges and completion certificates you can earn without any cost. "Audit Only" gives you access to course materials for learning, but a certificate usually requires a fee.</p>
+                </div>
+                
+                <div class="mb-10">
+                    <div class="mb-6">
+                        <h4 class="font-semibold mb-3 text-slate-700">Filter by Domain:</h4>
+                        <div id="domain-filters" class="flex flex-wrap gap-3"></div>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="font-semibold mb-3 text-slate-700">Filter by Credential Type:</h4>
+                        <div id="type-filters" class="flex flex-wrap gap-3"></div>
+                    </div>
+                </div>
+                
+                <div id="results-count" class="mb-6 text-slate-600 font-medium"></div>
+
+                <div id="cert-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                </div>
+                <div id="no-results" class="hidden text-center py-12">
+                    <h4 class="text-2xl font-semibold text-slate-700">No matching certifications found.</h4>
+                    <p class="text-slate-500 mt-2">Try adjusting your filters to find more learning opportunities.</p>
+                    <button id="clear-filters-btn" class="mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-colors">Clear All Filters</button>
+                </div>
+            </section>
+
+            <section id="journey" class="mt-20">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-slate-900">Your Learning Journey: Maximizing Impact</h3>
+                    <p class="max-w-2xl mx-auto text-slate-600 mt-2">Earning a credential is just the first step. Follow this path to effectively learn, showcase your new skills, and accelerate your career growth in the dynamic field of AI.</p>
+                </div>
+                <div class="relative">
+                    <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-slate-300"></div>
+                    <div class="space-y-12 md:space-y-0">
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="md:w-1/2 md:pr-8 text-center md:text-right">
+                                <div class="bg-white p-6 rounded-lg shadow-md inline-block max-w-sm">
+                                    <h4 class="font-bold text-xl text-blue-600 mb-2">1. Learn Strategically</h4>
+                                    <p class="text-slate-600">Approach free courses with discipline. Create a study schedule, take detailed notes, and actively engage with all materials. Prioritize understanding the fundamental concepts, as this will empower you to solve real-world problems.</p>
+                                </div>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl my-4 md:my-0 z-10 shrink-0">1</div>
+                            <div class="md:w-1/2 md:pl-8"></div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="md:w-1/2 md:pr-8 hidden md:block"></div>
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl my-4 md:my-0 z-10 shrink-0 order-first md:order-none">2</div>
+                            <div class="md:w-1/2 md:pl-8 text-center md:text-left">
+                                <div class="bg-white p-6 rounded-lg shadow-md inline-block max-w-sm">
+                                    <h4 class="font-bold text-xl text-blue-600 mb-2">2. Build Your Portfolio</h4>
+                                    <p class="text-slate-600">A certification proves you've learned; a project proves you can do. Apply your new skills to create practical projects. Host them on a GitHub repository with clear documentation to provide tangible evidence of your capabilities.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="md:w-1/2 md:pr-8 text-center md:text-right">
+                                <div class="bg-white p-6 rounded-lg shadow-md inline-block max-w-sm">
+                                    <h4 class="font-bold text-xl text-blue-600 mb-2">3. Leverage Credentials</h4>
+                                    <p class="text-slate-600">Share your digital badges and certificates on LinkedIn and your personal website. Verifiable credentials add a layer of trust and make it easier for employers to recognize your skills, opening doors to new opportunities.</p>
+                                </div>
+                            </div>
+                             <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl my-4 md:my-0 z-10 shrink-0">3</div>
+                            <div class="md:w-1/2 md:pl-8"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div id="modal-bg" class="absolute inset-0 bg-black/60"></div>
+        <div id="modal-content" class="relative bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8">
+        </div>
+    </div>
+
+
+<script>
+const certData = [
+    {
+        domain: "AI/ML/Data Science",
+        provider: "Google Cloud",
+        title: "Build and Deploy Machine Learning Solutions on Vertex AI",
+        credentialType: "Digital Badge",
+        isTrulyFree: true,
+        keyTopics: "Vertex AI, AutoML, Custom Training, Model Deployment",
+        duration: "7 hours",
+        link: "https://www.cloudskillsboost.google/",
+        description: "This course is for Data Scientists and ML Engineers. It teaches you to build, train, evaluate, tune, and deploy ML models using Google Cloud's Vertex AI platform."
+    },
+    {
+        domain: "AI/ML/Data Science",
+        provider: "IBM",
+        title: "Artificial Intelligence Fundamentals",
+        credentialType: "Digital Badge",
+        isTrulyFree: true,
+        keyTopics: "AI concepts, ML, Deep Learning, Chatbots, AI Ethics",
+        duration: "10 hours",
+        link: "https://skillsbuild.org/",
+        description: "A foundational course from IBM SkillsBuild covering the core concepts of Artificial Intelligence, its applications, and ethical considerations."
+    },
+    {
+        domain: "AI/ML/Data Science",
+        provider: "IBM",
+        title: "Data Fundamentals",
+        credentialType: "Digital Badge",
+        isTrulyFree: true,
+        keyTopics: "Data analytics concepts, methodologies, tools, Python",
+        duration: "7 hours",
+        link: "https://skillsbuild.org/",
+        description: "Learn the fundamentals of data science, including the data analysis process, relevant methodologies, and common tools used in the industry."
+    },
+     {
+        domain: "AI/ML/Data Science",
+        provider: "IBM",
+        title: "AI for Everyone: Master the Basics",
+        credentialType: "Digital Badge",
+        isTrulyFree: true,
+        keyTopics: "AI applications, ML, Deep Learning, Neural Networks, Gen AI",
+        duration: "4 weeks (1-2 hrs/week)",
+        link: "https://www.edx.org/school/ibm",
+        description: "Available on edX, this course provides a comprehensive overview of AI, making complex topics accessible to a broad audience. Includes a skill badge upon completion."
+    },
+    {
+        domain: "Deep Learning",
+        provider: "Great Learning",
+        title: "Introduction to Deep Learning",
+        credentialType: "Completion Certificate",
+        isTrulyFree: true,
+        keyTopics: "Deep Learning fundamentals, Neural Networks, CNN, RNN, Python",
+        duration: "3.5 hours",
+        link: "https://www.mygreatlearning.com/academy/learn-for-free/courses/introduction-to-deep-learning",
+        description: "This course covers the essentials of Deep Learning, from mathematical prerequisites to hands-on demos with TensorFlow, CNNs, and RNNs. Note: The provider's policy on certificate fees should be double-checked."
+    },
+    {
+        domain: "Generative AI & LLMs",
+        provider: "IBM",
+        title: "Generative AI: Introduction and Applications",
+        credentialType: "Digital Badge",
+        isTrulyFree: true,
+        keyTopics: "Generative AI, ChatGPT, Prompt Engineering, LLMs, Applications",
+        duration: "1-4 Weeks",
+        link: "https://www.edx.org/school/ibm",
+        description: "Explore the world of Generative AI, including foundational models, prompt engineering techniques, and real-world applications. A skill badge is available on the edX platform."
+    },
+    {
+        domain: "Generative AI & LLMs",
+        provider: "IBM",
+        title: "Generative AI in Action",
+        credentialType: "Digital Badge",
+        isTrulyFree: true,
+        keyTopics: "Gen AI principles, Prompt Engineering, Python libraries, Gen AI career paths",
+        duration: "5+ hours",
+        link: "https://skillsbuild.org/",
+        description: "This IBM SkillsBuild course provides a hands-on look at applying Generative AI principles and prompt engineering to solve practical problems."
+    },
+    {
+        domain: "Generative AI & LLMs",
+        provider: "Salesforce",
+        title: "Salesforce Certified Agentforce Specialist",
+        credentialType: "Professional Certification",
+        isTrulyFree: true,
+        keyTopics: "Agentforce concepts, Prompt Engineering, RAG, Fine-tuning",
+        duration: "Exam",
+        link: "https://trailhead.salesforce.com/credentials/agentforcespecialist",
+        description: "A unique, time-sensitive opportunity. The exam registration for this professional certification is free until March 2025, validating your expertise in Salesforce's AI-driven solutions."
+    },
+    {
+        domain: "Generative AI & LLMs",
+        provider: "Google Cloud",
+        title: "Introduction to Generative AI",
+        credentialType: "Audit Only",
+        isTrulyFree: false,
+        keyTopics: "Generative AI, Application Development, AI, ML Methods",
+        duration: "1-4 Weeks",
+        link: "https://www.coursera.org/courses?query=generative%20ai",
+        description: "Hosted on Coursera, this course offers free access to learning materials on Generative AI concepts from Google Cloud experts. A formal certificate requires payment."
+    },
+    {
+        domain: "Generative AI & LLMs",
+        provider: "DeepLearning.AI",
+        title: "ChatGPT Prompt Engineering for Developers",
+        credentialType: "Audit Only",
+        isTrulyFree: false,
+        keyTopics: "Prompt Engineering, LLMs for summarizing, inferring, transforming",
+        duration: "1.5 hours",
+        link: "https://learn.deeplearning.ai/",
+        description: "A popular short course that teaches developers how to use LLMs effectively through prompt engineering. A completion email is provided instead of a formal certificate."
+    },
+    {
+        domain: "Generative AI & LLMs",
+        provider: "Cohere",
+        title: "LLM University",
+        credentialType: "Audit Only",
+        isTrulyFree: false,
+        keyTopics: "LLM basics, architecture, fine-tuning, real-world applications",
+        duration: "Self-paced",
+        link: "https://cohere.com/llmu",
+        description: "A free, beginner-friendly resource from Cohere to learn the fundamentals of Large Language Models. Certificate availability is not specified."
+    },
+    {
+        domain: "Generative AI & LLMs",
+        provider: "Hugging Face",
+        title: "NLP Course",
+        credentialType: "Audit Only",
+        isTrulyFree: false,
+        keyTopics: "NLP basics, LLMs, Transformers library, text generation",
+        duration: "Self-paced",
+        link: "https://huggingface.co/course/chapter0/1",
+        description: "A practical, hands-on course focused on the Hugging Face ecosystem, particularly the Transformers library. A certificate is not mentioned."
+    },
+    {
+        domain: "LLM Security & AI Governance",
+        provider: "Securiti Education",
+        title: "AI Security & Governance Certification",
+        credentialType: "Completion Certificate",
+        isTrulyFree: true,
+        keyTopics: "Gen AI risks, Global AI laws, AI risk management, LLM firewalls",
+        duration: "2-2.5 hours",
+        link: "https://education.securiti.ai/certifications/ai-governance/",
+        description: "A free, IAPP-accredited certification covering the critical need for responsible AI governance, security, and compliance. Includes shareable badges and a formal certificate."
+    },
+    {
+        domain: "Other AI-related",
+        provider: "OpenCV University",
+        title: "Free OpenCV Course",
+        credentialType: "Official Certification",
+        isTrulyFree: true,
+        keyTopics: "Image/Video manipulation, Object/Face detection, Deep Learning",
+        duration: "3 hours",
+        link: "https://opencv.org/university/free-opencv-course/",
+        description: "An official certification from the creators of OpenCV, the world's largest Computer Vision library. Learn fundamental skills and get a verifiable credential."
+    },
+    {
+        domain: "Other AI-related",
+        provider: "Great Learning",
+        title: "Reinforcement Learning with Python",
+        credentialType: "Completion Certificate",
+        isTrulyFree: true,
+        keyTopics: "RL introduction, Q-learning, Python implementation",
+        duration: "8.25 hours",
+        link: "https://www.mygreatlearning.com/academy/learn-for-free/courses/reinforcement-learning-with-python",
+        description: "An intermediate-level course covering the fundamentals of Reinforcement Learning with practical Python code examples, offering a free completion certificate."
+    },
+    {
+        domain: "Other AI-related",
+        provider: "Great Learning",
+        title: "Introduction to Natural Language Processing",
+        credentialType: "Completion Certificate",
+        isTrulyFree: true,
+        keyTopics: "NLP basics, Text Mining, Chatbots, Sentiment Analysis",
+        duration: "4.5 hours",
+        link: "https://www.mygreatlearning.com/nlp/free-courses",
+        description: "Learn how computers understand and process human language. This course covers core NLP concepts and applications and includes a free certificate."
+    },
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+    const certGrid = document.getElementById('cert-grid');
+    const domainFiltersContainer = document.getElementById('domain-filters');
+    const typeFiltersContainer = document.getElementById('type-filters');
+    const resultsCount = document.getElementById('results-count');
+    const noResults = document.getElementById('no-results');
+    const clearFiltersBtn = document.getElementById('clear-filters-btn');
+    const modal = document.getElementById('modal');
+    const modalBg = document.getElementById('modal-bg');
+    const modalContent = document.getElementById('modal-content');
+
+    let filters = {
+        domain: 'all',
+        type: 'all'
+    };
+    
+    const domains = ['all', ...new Set(certData.map(c => c.domain))];
+    const types = ['all', 'Truly Free', 'Audit Only'];
+
+    function createFilterButtons(container, items, filterKey) {
+        items.forEach(item => {
+            const button = document.createElement('button');
+            button.className = 'filter-btn px-4 py-2 text-sm font-semibold rounded-full';
+            button.textContent = item === 'all' ? 'All' : item;
+            if (item === 'all') {
+                button.classList.add('filter-btn-active');
+            }
+            button.dataset.filter = item;
+            button.addEventListener('click', () => {
+                filters[filterKey] = item;
+                updateActiveButton(container, button);
+                renderCerts();
+            });
+            container.appendChild(button);
+        });
+    }
+    
+    function clearAllFilters() {
+        filters.domain = 'all';
+        filters.type = 'all';
+        updateActiveButton(domainFiltersContainer, domainFiltersContainer.querySelector('[data-filter="all"]'));
+        updateActiveButton(typeFiltersContainer, typeFiltersContainer.querySelector('[data-filter="all"]'));
+        renderCerts();
+    }
+
+    clearFiltersBtn.addEventListener('click', clearAllFilters);
+    
+    function updateActiveButton(container, activeButton) {
+        container.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('filter-btn-active');
+            btn.classList.remove('bg-blue-500', 'text-white');
+            btn.classList.add('bg-gray-200', 'text-gray-700');
+        });
+        activeButton.classList.add('filter-btn-active');
+        activeButton.classList.add('bg-blue-500', 'text-white');
+        activeButton.classList.remove('bg-gray-200', 'text-gray-700');
+    }
+
+    function createCertCard(cert, index) {
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-lg shadow-md border border-slate-200 overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300 card-enter';
+        card.style.animationDelay = `${index * 50}ms`;
+
+        const providerColor = {
+            "Google Cloud": "bg-blue-100 text-blue-800",
+            "IBM": "bg-sky-100 text-sky-800",
+            "Great Learning": "bg-red-100 text-red-800",
+            "DeepLearning.AI": "bg-purple-100 text-purple-800",
+            "Salesforce": "bg-cyan-100 text-cyan-800",
+            "Securiti Education": "bg-green-100 text-green-800",
+            "OpenCV University": "bg-yellow-100 text-yellow-800",
+            "Cohere": "bg-indigo-100 text-indigo-800",
+            "Hugging Face": "bg-amber-100 text-amber-800",
+        }[cert.provider] || 'bg-slate-100 text-slate-800';
+
+        const credentialMeta = {
+            "Digital Badge": { icon: '🛡️', color: 'bg-green-100 text-green-800' },
+            "Completion Certificate": { icon: '📜', color: 'bg-indigo-100 text-indigo-800' },
+            "Official Certification": { icon: '⭐', color: 'bg-yellow-100 text-yellow-800' },
+            "Professional Certification": { icon: '🏆', color: 'bg-orange-100 text-orange-800' },
+            "Audit Only": { icon: '📖', color: 'bg-slate-100 text-slate-800' }
+        }[cert.credentialType];
+
+        card.innerHTML = `
+            <div class="p-6 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="text-xs font-bold uppercase tracking-wider ${providerColor} px-2 py-1 rounded-full">${cert.provider}</span>
+                </div>
+                <h3 class="font-bold text-lg text-slate-800 mb-2">${cert.title}</h3>
+                <p class="text-sm text-slate-500 line-clamp-2">${cert.description}</p>
+            </div>
+            <div class="px-6 py-4 bg-slate-50 border-t border-slate-200 flex justify-between items-center text-sm">
+                <span class="font-semibold ${credentialMeta.color} px-2 py-1 rounded">${credentialMeta.icon} ${cert.credentialType}</span>
+                <span class="text-slate-500 font-medium">${cert.duration}</span>
+            </div>
+        `;
+        card.addEventListener('click', () => openModal(cert));
+        return card;
+    }
+    
+    function openModal(cert) {
+        modalContent.innerHTML = `
+            <button id="close-modal" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 transition-colors">&times;</button>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">${cert.title}</h2>
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="text-sm font-semibold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">${cert.provider}</span>
+                <span class="text-sm font-semibold bg-purple-100 text-purple-800 px-3 py-1 rounded-full">${cert.domain}</span>
+                <span class="text-sm font-semibold ${cert.isTrulyFree ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'} px-3 py-1 rounded-full">${cert.isTrulyFree ? 'Truly Free Credential' : 'Audit Only'}</span>
+            </div>
+            <p class="text-slate-600 mb-6">${cert.description}</p>
+            <div class="bg-slate-100 p-4 rounded-lg">
+                <h4 class="font-semibold text-slate-800 mb-2">Key Topics Covered:</h4>
+                <p class="text-slate-700 text-sm mb-4">${cert.keyTopics}</p>
+                <h4 class="font-semibold text-slate-800 mb-2">Estimated Duration:</h4>
+                <p class="text-slate-700 text-sm">${cert.duration}</p>
+            </div>
+            <a href="${cert.link}" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-blue-500 text-white font-bold py-3 px-4 rounded-lg mt-6 hover:bg-blue-600 transition-colors">
+                Go to Course
+            </a>
+        `;
+        
+        modal.classList.remove('hidden');
+        modalBg.classList.add('modal-bg-enter');
+        modalContent.classList.add('modal-content-enter');
+        document.getElementById('close-modal').addEventListener('click', closeModal);
+    }
+    
+    function closeModal() {
+        modal.classList.add('hidden');
+        modalBg.classList.remove('modal-bg-enter');
+        modalContent.classList.remove('modal-content-enter');
+    }
+
+    modalBg.addEventListener('click', closeModal);
+
+    function renderCerts() {
+        certGrid.innerHTML = '';
+        const filteredCerts = certData.filter(cert => {
+            const domainMatch = filters.domain === 'all' || cert.domain === filters.domain;
+            const typeMatch = filters.type === 'all' || 
+                              (filters.type === 'Truly Free' && cert.isTrulyFree) ||
+                              (filters.type === 'Audit Only' && !cert.isTrulyFree);
+            return domainMatch && typeMatch;
+        });
+
+        resultsCount.textContent = `Showing ${filteredCerts.length} of ${certData.length} certifications.`;
+
+        if (filteredCerts.length > 0) {
+            noResults.classList.add('hidden');
+            certGrid.classList.remove('hidden');
+            filteredCerts.forEach((cert, index) => {
+                const card = createCertCard(cert, index);
+                certGrid.appendChild(card);
+            });
+        } else {
+            noResults.classList.remove('hidden');
+            certGrid.classList.add('hidden');
+        }
+    }
+    
+    function renderCharts() {
+        const typeCounts = certData.reduce((acc, cert) => {
+            const type = cert.isTrulyFree ? 'Truly Free' : 'Audit Only';
+            acc[type] = (acc[type] || 0) + 1;
+            return acc;
+        }, {});
+
+        const providerCounts = certData.reduce((acc, cert) => {
+            acc[cert.provider] = (acc[cert.provider] || 0) + 1;
+            return acc;
+        }, {});
+        const sortedProviders = Object.entries(providerCounts).sort((a,b) => b[1] - a[1]);
+
+        const typeChartCtx = document.getElementById('credentialTypeChart').getContext('2d');
+        const providerChartCtx = document.getElementById('providerChart').getContext('2d');
+
+        const credentialTypeChart = new Chart(typeChartCtx, {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(typeCounts),
+                datasets: [{
+                    data: Object.values(typeCounts),
+                    backgroundColor: ['#22c55e', '#64748b'],
+                    borderColor: '#f8fafc',
+                    borderWidth: 4,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { padding: 20, font: { size: 14 } }
+                    }
+                },
+                onClick: (e, elements) => {
+                    if (elements.length > 0) {
+                        const label = credentialTypeChart.data.labels[elements[0].index];
+                        filters.type = label;
+                        updateActiveButton(typeFiltersContainer, typeFiltersContainer.querySelector(`[data-filter="${label}"]`));
+                        renderCerts();
+                        document.getElementById('explorer').scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            }
+        });
+
+        const providerChart = new Chart(providerChartCtx, {
+            type: 'bar',
+            data: {
+                labels: sortedProviders.map(p => p[0]),
+                datasets: [{
+                    label: '# of Offerings',
+                    data: sortedProviders.map(p => p[1]),
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.7)', 'rgba(14, 165, 233, 0.7)', 'rgba(239, 68, 68, 0.7)',
+                        'rgba(168, 85, 247, 0.7)', 'rgba(22, 163, 74, 0.7)', 'rgba(245, 158, 11, 0.7)',
+                        'rgba(132, 204, 22, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(59, 130, 246, 1)', 'rgba(14, 165, 233, 1)', 'rgba(239, 68, 68, 1)',
+                        'rgba(168, 85, 247, 1)', 'rgba(22, 163, 74, 1)', 'rgba(245, 158, 11, 1)',
+                        'rgba(132, 204, 22, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { beginAtZero: true, grid: { display: false } },
+                    y: { grid: { display: false } }
+                }
+            }
+        });
+    }
+
+    createFilterButtons(domainFiltersContainer, domains, 'domain');
+    createFilterButtons(typeFiltersContainer, types, 'type');
+    renderCerts();
+    renderCharts();
+});
+
+</script>
+</body>
+</html>
