@@ -55,54 +55,100 @@
         .filter-btn-active:hover { background-color: #2563eb; }
         .filter-btn:not(.filter-btn-active) { background-color: #e5e7eb; color: #4b5563; }
         .filter-btn:not(.filter-btn-active):hover { background-color: #d1d5db; }
+
+        /* Custom styles for enhanced professionalism and attraction */
+        .hero-gradient-bg {
+            background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%); /* Light blue to white gradient */
+        }
+        .text-shadow-md {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .cta-button {
+            transition: all 0.3s ease-in-out;
+            transform: translateY(0);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: #3b82f6;
+            border-radius: 2px;
+        }
+        .feature-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
     <div id="app">
-        <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200">
+        <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200 shadow-sm">
             <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
                 <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl">
+                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl shadow-md">
                         🎓
                     </div>
                     <h1 class="text-xl font-bold text-slate-800">AI Certificate Explorer</h1>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#insights" class="nav-link text-slate-600 font-medium">Insights</a>
-                    <a href="#explorer" class="nav-link text-slate-600 font-medium">Explorer</a>
-                    <a href="#journey" class="nav-link text-slate-600 font-medium">Your Journey</a>
-                    <a href="#contribute" class="nav-link text-slate-600 font-medium">Contribute</a>
+                    <a href="#insights" class="nav-link text-slate-600 font-medium hover:text-blue-600">Insights</a>
+                    <a href="#explorer" class="nav-link text-slate-600 font-medium hover:text-blue-600">Explorer</a>
+                    <a href="#journey" class="nav-link text-slate-600 font-medium hover:text-blue-600">Your Journey</a>
+                    <a href="#contribute" class="nav-link text-slate-600 font-medium hover:text-blue-600">Contribute</a>
                 </div>
             </nav>
         </header>
 
         <main class="container mx-auto px-6 py-12">
-            <section class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Your Gateway to Free AI Expertise</h2>
+            <section class="text-center mb-16 hero-gradient-bg py-20 rounded-xl shadow-lg">
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight text-shadow-md">
+                    Master AI. Zero Cost. Real Credentials.
+                </h2>
                 <p class="max-w-3xl mx-auto text-xl font-medium text-slate-700 mb-8">
-                    The AI revolution is here, and opportunity awaits. Don't let cost hold you back.
-                    Unlock the power of AI, Machine Learning, and Data Science with this curated guide to <span class="text-blue-600 font-bold">10+ truly free certifications</span> from industry giants like Google, IBM, and Salesforce.
-                    This platform is your strategic partner, offering a clear roadmap to master cutting-edge domains like Generative AI, LLM Security, and Data Science, transforming your learning into tangible career growth.
+                    The AI revolution is booming. Don't get left behind.
+                    Discover **10+ free, industry-recognized certifications** in AI, ML, Data Science, Gen AI, and LLM Security from top global providers.
+                    This platform is your direct path to in-demand skills and a transformed career.
                 </p>
-                <p class="max-w-xl mx-auto text-lg text-slate-600">
-                    Dive in, explore the possibilities, and start building your future in AI today!
-                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#explorer" class="cta-button bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-blue-700 text-lg">
+                        Start Exploring Certs ✨
+                    </a>
+                    <a href="#journey" class="cta-button bg-transparent border-2 border-blue-600 text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition-all text-lg">
+                        See Your Roadmap 🚀
+                    </a>
+                </div>
             </section>
 
             <section id="insights" class="mb-20">
                 <div class="text-center mb-12">
-                    <h3 class="text-3xl font-bold text-slate-900">The Learning Landscape at a Glance</h3>
-                    <p class="max-w-2xl mx-auto text-slate-600 mt-2">Before you dive in, here's a visual summary of the free offerings available. These charts provide insights into the types of credentials you can earn and who the major providers are. You can click on chart segments to automatically filter the results below.</p>
+                    <h3 class="text-3xl font-bold text-slate-900 section-heading">The Learning Landscape at a Glance</h3>
+                    <p class="max-w-2xl mx-auto text-slate-600 mt-4">Gain quick insights into the types of credentials available and the leading providers in free AI education. Interact with the charts to filter your search instantly!</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-                    <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="bg-white p-6 rounded-xl shadow-md feature-card">
                         <h4 class="text-xl font-semibold text-center mb-4 text-slate-800">Offerings by Credential Type</h4>
                         <div class="chart-container">
                             <canvas id="credentialTypeChart"></canvas>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="bg-white p-6 rounded-xl shadow-md feature-card">
                         <h4 class="text-xl font-semibold text-center mb-4 text-slate-800">Top Free Providers by Volume</h4>
                         <div class="chart-container">
                             <canvas id="providerChart"></canvas>
@@ -113,8 +159,8 @@
 
             <section id="explorer" class="bg-white p-8 rounded-xl shadow-lg">
                 <div class="text-center mb-8">
-                    <h3 class="text-3xl font-bold text-slate-900">Explore Free Certifications</h3>
-                     <p class="max-w-3xl mx-auto text-slate-600 mt-2">Use the filters below to find the perfect course for your needs. The "Truly Free" credentials are digital badges and completion certificates you can earn without any cost. "Audit Only" gives you access to course materials for learning, but a certificate usually requires a fee.</p>
+                    <h3 class="text-3xl font-bold text-slate-900 section-heading">Explore Free Certifications</h3>
+                     <p class="max-w-3xl mx-auto text-slate-600 mt-4">Filter through a comprehensive list of free certifications. Discover "Truly Free" credentials (digital badges & certificates) or "Audit Only" options for deep learning without formal recognition.</p>
                 </div>
                 
                 <div class="mb-10">
@@ -141,29 +187,29 @@
 
             <section id="journey" class="mt-20">
                 <div class="text-center mb-12">
-                    <h3 class="text-3xl font-bold text-slate-900">Your Learning Journey: Maximizing Impact</h3>
-                    <p class="max-w-2xl mx-auto text-slate-600 mt-2">Earning a credential is just the first step. Follow this path to effectively learn, showcase your new skills, and accelerate your career growth in the dynamic field of AI.</p>
+                    <h3 class="text-3xl font-bold text-slate-900 section-heading">Your Learning Journey: Maximizing Impact</h3>
+                    <p class="max-w-2xl mx-auto text-slate-600 mt-4">Earning a credential is just the first step. Follow this path to effectively learn, showcase your new skills, and accelerate your career growth in the dynamic field of AI.</p>
                 </div>
                 <div class="relative">
                     <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-slate-300"></div>
                     <div class="space-y-12 md:space-y-0">
                         <div class="flex flex-col md:flex-row items-center">
                             <div class="md:w-1/2 md:pr-8 text-center md:text-right">
-                                <div class="bg-white p-6 rounded-lg shadow-md inline-block max-w-sm">
-                                    <h4 class="font-bold text-xl text-blue-600 mb-2">1. Learn Strategically</h4>
+                                <div class="bg-white p-6 rounded-lg shadow-md inline-block max-w-sm feature-card">
+                                    <h4 class="font-bold text-xl text-blue-600 mb-2">1. Learn Strategically 🧠</h4>
                                     <p class="text-slate-600">Approach free courses with discipline. Create a study schedule, take detailed notes, and actively engage with all materials. Prioritize understanding the fundamental concepts, as this will empower you to solve real-world problems.</p>
                                 </div>
                             </div>
-                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl my-4 md:my-0 z-10 shrink-0">1</div>
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl my-4 md:my-0 z-10 shrink-0 shadow-md">1</div>
                             <div class="md:w-1/2 md:pl-8"></div>
                         </div>
 
                         <div class="flex flex-col md:flex-row items-center">
                             <div class="md:w-1/2 md:pr-8 hidden md:block"></div>
-                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl my-4 md:my-0 z-10 shrink-0 order-first md:order-none">2</div>
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl my-4 md:my-0 z-10 shrink-0 order-first md:order-none shadow-md">2</div>
                             <div class="md:w-1/2 md:pl-8 text-center md:text-left">
-                                <div class="bg-white p-6 rounded-lg shadow-md inline-block max-w-sm">
-                                    <h4 class="font-bold text-xl text-blue-600 mb-2">3. Build Your Portfolio</h4>
+                                <div class="bg-white p-6 rounded-lg shadow-md inline-block max-w-sm feature-card">
+                                    <h4 class="font-bold text-xl text-blue-600 mb-2">2. Build Your Portfolio 🛠️</h4>
                                     <p class="text-slate-600">A certification proves you've learned; a project proves you can do. Apply your new skills to create practical projects. Host them on a GitHub repository with clear documentation to provide tangible evidence of your capabilities.</p>
                                 </div>
                             </div>
@@ -171,12 +217,12 @@
 
                         <div class="flex flex-col md:flex-row items-center">
                             <div class="md:w-1/2 md:pr-8 text-center md:text-right">
-                                <div class="bg-white p-6 rounded-lg shadow-md inline-block max-w-sm">
-                                    <h4 class="font-bold text-xl text-blue-600 mb-2">3. Leverage Credentials</h4>
+                                <div class="bg-white p-6 rounded-lg shadow-md inline-block max-w-sm feature-card">
+                                    <h4 class="font-bold text-xl text-blue-600 mb-2">3. Leverage Credentials 📈</h4>
                                     <p class="text-slate-600">Share your digital badges and certificates on LinkedIn and your personal website. Verifiable credentials add a layer of trust and make it easier for employers to recognize your skills, opening doors to new opportunities.</p>
                                 </div>
                             </div>
-                             <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl my-4 md:my-0 z-10 shrink-0">3</div>
+                             <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl my-4 md:my-0 z-10 shrink-0 shadow-md">3</div>
                             <div class="md:w-1/2 md:pl-8"></div>
                         </div>
                     </div>
@@ -184,12 +230,12 @@
             </section>
 
             <section id="contribute" class="mt-20 bg-blue-50 p-10 rounded-xl shadow-lg text-center">
-                <h3 class="text-3xl font-bold text-blue-800 mb-4">Join Our Community: Contribute to the AI Certificate Explorer!</h3>
+                <h3 class="text-3xl font-bold text-blue-800 mb-4 section-heading">Join Our Community: Contribute to the AI Certificate Explorer!</h3>
                 <p class="max-w-3xl mx-auto text-blue-700 text-lg mb-6">
                     This platform thrives on collective knowledge. Help us keep this resource up-to-date and comprehensive by adding new free certifications, correcting information, or suggesting improvements. Your contribution empowers the entire AI learning community!
                 </p>
-                <a href="https://github.com/balavenkatesh3322/free-ai-certification" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-blue-700 transition-colors text-lg">
-                    Contribute on GitHub
+                <a href="https://github.com/balavenkatesh3322/free-ai-certification" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-blue-700 transition-colors text-lg cta-button">
+                    Contribute on GitHub 🌟
                 </a>
             </section>
         </main>
@@ -207,8 +253,8 @@
                     <p class="text-slate-300 text-sm mb-4">
                         Have a project idea? Looking for expertise in AI/ML or Data Science? Let's connect!
                     </p>
-                    <a href="mailto:venkateshpnk22@gmail.com" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors">
-                        Contact for Projects
+                    <a href="mailto:venkateshpnk22@gmail.com" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors cta-button">
+                        Contact for Projects 📧
                     </a>
                 </div>
                 <div class="text-center md:text-right">
@@ -217,7 +263,7 @@
                         Driven by a passion for AI and open education.
                     </p>
                     <a href="https://balavenkatesh3322.github.io/bala_venkatesh_profile/" target="_blank" rel="noopener noreferrer" class="inline-block text-blue-300 hover:text-blue-200 transition-colors font-medium">
-                        Visit My Personal Website
+                        Visit My Personal Website 🌐
                     </a>
                 </div>
             </div>
