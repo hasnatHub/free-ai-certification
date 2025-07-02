@@ -110,6 +110,7 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#insights" class="nav-link text-slate-600 font-medium hover:text-blue-600">Insights</a>
                     <a href="#explorer" class="nav-link text-slate-600 font-medium hover:text-blue-600">Explorer</a>
+                    <a href="#learning-paths" class="nav-link text-slate-600 font-medium hover:text-blue-600">Learning Paths</a>
                     <a href="#journey" class="nav-link text-slate-600 font-medium hover:text-blue-600">Your Journey</a>
                     <a href="#contribute" class="nav-link text-slate-600 font-medium hover:text-blue-600">Contribute</a>
                 </div>
@@ -130,8 +131,8 @@
                     <a href="#explorer" class="cta-button bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-blue-700 text-lg">
                         Start Exploring Certs ✨
                     </a>
-                    <a href="#journey" class="cta-button bg-transparent border-2 border-blue-600 text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition-all text-lg">
-                        See Your Roadmap 🚀
+                    <a href="#learning-paths" class="cta-button bg-transparent border-2 border-blue-600 text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition-all text-lg">
+                        See Learning Paths 🚀
                     </a>
                 </div>
             </section>
@@ -184,6 +185,53 @@
                     <button id="clear-filters-btn" class="mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-colors">Clear All Filters</button>
                 </div>
             </section>
+
+            <section id="learning-paths" class="mt-20 bg-white p-8 rounded-xl shadow-lg">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-slate-900 section-heading">Structured Learning Paths</h3>
+                    <p class="max-w-2xl mx-auto text-slate-600 mt-4">Navigate the complex world of AI with clear, step-by-step learning roadmaps. Each path combines multiple free certifications to build comprehensive expertise in a specific AI domain.</p>
+                </div>
+
+                <div id="gen-ai-engineer-path" class="mb-12">
+                    <h4 class="text-2xl font-bold text-blue-700 mb-6 text-center md:text-left">Path: Generative AI Engineer 🤖</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-blue-50 p-6 rounded-lg shadow-md feature-card">
+                            <h5 class="font-bold text-lg text-blue-800 mb-2">Step 1: AI & ML Fundamentals</h5>
+                            <p class="text-slate-700 text-sm mb-4">Build a strong base in Artificial Intelligence and Machine Learning concepts, essential for any AI specialization.</p>
+                            <ul class="list-disc list-inside text-slate-600 text-sm space-y-1">
+                                <li><a href="https://skillsbuild.org/students/course-catalog/artificial-intelligence" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">IBM: Artificial Intelligence Fundamentals</a></li>
+                                <li><a href="https://www.edx.org/learn/artificial-intelligence/ibm-ai-for-everyone-master-the-basics" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">IBM: AI for Everyone: Master the Basics</a></li>
+                                <li><a href="https://www.mygreatlearning.com/academy/learn-for-free/courses/introduction-to-deep-learning" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Great Learning: Introduction to Deep Learning</a></li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50 p-6 rounded-lg shadow-md feature-card">
+                            <h5 class="font-bold text-lg text-blue-800 mb-2">Step 2: Core Generative AI & LLMs</h5>
+                            <p class="text-slate-700 text-sm mb-4">Dive deep into Generative AI models, Large Language Models (LLMs), and the art of prompt engineering.</p>
+                            <ul class="list-disc list-inside text-slate-600 text-sm space-y-1">
+                                <li><a href="https://www.edx.org/learn/artificial-intelligence/generative-ai-introduction-and-applications" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">IBM: Generative AI: Introduction and Applications</a></li>
+                                <li><a href="https://skillsbuild.org/students/course-catalog/artificial-intelligence" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">IBM: Generative AI in Action</a></li>
+                                <li><a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">DeepLearning.AI: ChatGPT Prompt Engineering for Developers</a></li>
+                                <li><a href="https://cohere.com/llmu" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Cohere: LLM University (Audit)</a></li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50 p-6 rounded-lg shadow-md feature-card">
+                            <h5 class="font-bold text-lg text-blue-800 mb-2">Step 3: Application & Responsible AI</h5>
+                            <p class="text-slate-700 text-sm mb-4">Learn to deploy AI solutions and understand the critical aspects of AI security and governance.</p>
+                            <ul class="list-disc list-inside text-slate-600 text-sm space-y-1">
+                                <li><a href="https://www.cloudskillsboost.google/course_templates/684" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Google Cloud: Build and Deploy ML Solutions on Vertex AI</a></li>
+                                <li><a href="https://education.securiti.ai/certifications/ai-governance/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Securiti Education: AI Security & Governance Certification</a></li>
+                                <li><a href="https://trailhead.salesforce.com/credentials/agentforcespecialist" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Salesforce: Certified Agentforce Specialist (Free Exam)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12 py-8 bg-slate-100 rounded-lg shadow-inner">
+                    <h4 class="text-2xl font-bold text-slate-700 mb-3">More Learning Paths Coming Soon!</h4>
+                    <p class="text-slate-600">We are actively curating paths for Data Scientists, Machine Learning Engineers, AI Ethics Specialists, and more. Stay tuned!</p>
+                </div>
+            </section>
+
 
             <section id="journey" class="mt-20">
                 <div class="text-center mb-12">
