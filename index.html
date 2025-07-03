@@ -95,106 +95,12 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        /* Styles for Learning Hub content */
-        .lh-section-heading {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 0.5rem;
-        }
-        .lh-section-heading::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: #3b82f6;
-            border-radius: 2px;
-        }
-        .lh-level-heading {
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .lh-resource-list li {
-            margin-bottom: 0.5rem;
-        }
-        .lh-resource-list a {
-            color: #2563eb;
-            transition: color 0.2s;
-        }
-        .lh-resource-list a:hover {
-            color: #1d4ed8;
-            text-decoration: underline;
-        }
-        .lh-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-        .lh-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-
-        /* New styles for visual roadmap */
-        .roadmap-step {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        .roadmap-step:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 1.25rem; /* Center with icon */
-            top: 2.5rem; /* Below the icon */
-            bottom: -1.5rem; /* Connect to next step */
-            width: 2px;
-            background-color: #cbd5e1; /* Slate-300 */
-        }
-        .roadmap-icon {
-            flex-shrink: 0;
-            width: 2.5rem;
-            height: 2.5rem;
-            background-color: #3b82f6;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-right: 1rem;
-            z-index: 10;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .roadmap-content {
-            flex-grow: 1;
-            background-color: #f8fafc; /* Slate-50 */
-            padding: 1rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-        }
-        .roadmap-content h5 {
-            font-weight: 600;
-            color: #1e40af; /* Blue-800 */
-            margin-bottom: 0.5rem;
-        }
-        .roadmap-content ul {
-            list-style: disc;
-            padding-left: 1.25rem;
-            font-size: 0.9rem;
-            color: #475569; /* Slate-700 */
-        }
-        .roadmap-content a {
-            color: #2563eb;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .roadmap-content a:hover {
-            color: #1d4ed8;
-            text-decoration: underline;
+        /* Styles for active navigation link */
+        .nav-link.active {
+            color: #2563eb; /* Blue-600 */
+            font-weight: 600; /* Semi-bold */
+            border-bottom: 2px solid #2563eb; /* Underline effect */
+            padding-bottom: 0.25rem; /* Space for underline */
         }
     </style>
 </head>
@@ -212,7 +118,8 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#insights" class="nav-link text-slate-600 font-medium hover:text-blue-600">Insights</a>
                     <a href="#explorer" class="nav-link text-slate-600 font-medium hover:text-blue-600">Explorer</a>
-                    <a href="learning_hub_page.html" class="nav-link text-slate-600 font-medium hover:text-blue-600">Learning Hub</a>
+                    <a href="learning_roadmap.html" class="nav-link text-slate-600 font-medium hover:text-blue-600">Learning Roadmaps 🗺️</a>
+                    <a href="learning_community.html" class="nav-link text-slate-600 font-medium hover:text-blue-600">Community 🤝</a>
                     <a href="#journey" class="nav-link text-slate-600 font-medium hover:text-blue-600">Your Journey</a>
                     <a href="#trending-news" class="nav-link text-slate-600 font-medium hover:text-blue-600">Trending News <span class="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full ml-1">NEW!</span></a>
                     <a href="#contribute" class="nav-link text-slate-600 font-medium hover:text-blue-600">Contribute</a>
@@ -234,8 +141,8 @@
                     <a href="#explorer" class="cta-button bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-blue-700 text-lg">
                         Start Exploring Certs ✨
                     </a>
-                    <a href="learning_hub_page.html" class="cta-button bg-transparent border-2 border-blue-600 text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition-all text-lg">
-                        See Learning Paths 🚀
+                    <a href="learning_roadmap.html" class="cta-button bg-transparent border-2 border-blue-600 text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition-all text-lg">
+                        See Learning Roadmaps 🚀
                     </a>
                 </div>
             </section>
@@ -875,6 +782,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const today = new Date();
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     lastUpdatedElement.textContent = `Last Updated: ${today.toLocaleDateString('en-US', options)}`;
+
+    // Highlight active nav link based on current page
+    const navLinks = document.querySelectorAll('.nav-link');
+    const currentPage = window.location.pathname.split('/').pop(); // Gets 'index.html', 'learning_roadmap.html', etc.
+
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage || 
+            (currentPage === '' && link.getAttribute('href') === '#insights')) { // For root/index page
+            link.classList.add('active');
+        } else if (link.getAttribute('href').includes(currentPage) && currentPage !== '') {
+             link.classList.add('active');
+        }
+    });
 });
 
 </script>
