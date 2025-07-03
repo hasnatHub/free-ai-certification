@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Community: Curated Paths & Resources for AI, ML, DL, Security, and Generative AI</title>
+    <meta name="description" content="Explore structured learning paths and hand-picked free resources for Artificial Intelligence, Machine Learning, Deep Learning, AI Security, and Generative AI, categorized by proficiency levels. Start your AI learning journey today!">
+    <meta name="keywords" content="AI learning paths, free AI resources, machine learning roadmap, deep learning guide, AI security learning, generative AI path, LLM learning, AI education, structured learning, AI career roadmap">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://balavenkatesh3322.github.io/free-ai-certification/learning_community.html">
+    <meta property="og:title" content="AI Learning Community: Your Curated Guide to AI Expertise">
+    <meta property="og:description" content="Explore structured learning paths and hand-picked free resources for Artificial Intelligence, Machine Learning, Deep Learning, AI Security, and Generative AI, categorized by proficiency levels. Start your AI learning journey today!">
+    <meta property="og:image" content="https://placehold.co/1200x630/ADD8E6/000000?text=AI+Learning+Community">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://balavenkatesh3322.github.io/free-ai-certification/learning_community.html">
+    <meta property="twitter:title" content="AI Learning Community: Your Curated Guide to AI Expertise">
+    <meta property="twitter:description" content="Explore structured learning paths and hand-picked free resources for Artificial Intelligence, Machine Learning, Deep Learning, AI Security, and Generative AI, categorized by proficiency levels. Start your AI learning journey today!">
+    <meta property="twitter:image" content="https://placehold.co/1200x675/ADD8E6/000000?text=AI+Learning+Community">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #3b82f6;
+            border-radius: 2px;
+        }
+        .level-heading {
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            color: #1e40af; /* Blue-800 */
+        }
+        .level-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #60a5fa; /* Blue-400 */
+            border-radius: 1.5px;
+        }
+        .resource-list li {
+            margin-bottom: 0.5rem;
+        }
+        .resource-list a {
+            color: #2563eb;
+            transition: color 0.2s;
+        }
+        .resource-list a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+        .card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .roadmap-category-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+        }
+        .roadmap-level-section {
+            background-color: #f0f9ff; /* Blue-50 */
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .roadmap-level-section:last-child {
+            margin-bottom: 0;
+        }
+        .roadmap-level-section h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+        .roadmap-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .roadmap-item-icon {
+            flex-shrink: 0;
+            width: 1.75rem;
+            height: 1.75rem;
+            background-color: #60a5fa;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            margin-right: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .roadmap-item-content {
+            flex-grow: 1;
+        }
+        .roadmap-item-content strong {
+            color: #334155; /* Slate-700 */
+        }
+        .roadmap-item-content ul {
+            list-style: disc;
+            padding-left: 1.25rem;
+            font-size: 0.9rem;
+            color: #475569;
+            margin-top: 0.25rem;
+        }
+        .roadmap-item-content a {
+            color: #2563eb;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .roadmap-item-content a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        /* Styles for active navigation link */
+        .nav-link.active {
+            color: #2563eb; /* Blue-600 */
+            font-weight: 600; /* Semi-bold */
+            border-bottom: 2px solid #2563eb; /* Underline effect */
+            padding-bottom: 0.25rem; /* Space for underline */
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl shadow-md">
+                    🤝
+                </div>
+                <h1 class="text-xl font-bold text-slate-800">AI Learning Community</h1>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link text-slate-600 font-medium hover:text-blue-600">Cert Explorer 🎓</a>
+                <a href="learning_roadmap.html" class="nav-link text-slate-600 font-medium hover:text-blue-600">Learning Roadmaps 🗺️</a>
+                <a href="#community-contribute" class="nav-link text-slate-600 font-medium hover:text-blue-600">Contribute Resources ✨</a>
+                <a href="#community-discussion" class="nav-link text-slate-600 font-medium hover:text-blue-600">Join Discussion 💬</a>
+            </div>
+            <a href="index.html" class="text-blue-600 hover:text-blue-800 font-semibold text-sm md:text-base">
+                &larr; Back to Main
+            </a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <section class="text-center mb-16 bg-gradient-to-br from-purple-50 to-white py-16 rounded-xl shadow-lg">
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight">
+                Welcome to the AI Learning Community!
+            </h2>
+            <p class="max-w-3xl mx-auto text-xl font-medium text-slate-700 mb-8">
+                This is your space to connect, share, and grow with fellow AI enthusiasts and professionals. Together, we can build the most comprehensive and up-to-date free AI learning resource.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#community-contribute" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-blue-700 text-lg transition-all transform hover:-translate-y-1">
+                    Suggest a Resource 💡
+                </a>
+                <a href="#community-discussion" class="bg-transparent border-2 border-blue-600 text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition-all transform hover:-translate-y-1">
+                    Join the Discussion 💬
+                </a>
+            </div>
+        </section>
+
+        <!-- Contribute Resources Section -->
+        <section id="community-contribute" class="mb-16 p-8 bg-white rounded-xl shadow-md card">
+            <h3 class="text-3xl font-bold text-slate-900 mb-8 text-center section-heading">Contribute New Resources</h3>
+            <p class="text-lg text-slate-700 mb-8 text-center">
+                Found an amazing free AI course, tutorial, or article that's not listed? Help us expand our database! Your contributions make this community stronger.
+            </p>
+            <div class="max-w-xl mx-auto bg-blue-50 p-6 rounded-lg shadow-inner">
+                <h4 class="text-xl font-semibold text-blue-800 mb-4">How to Suggest a Resource:</h4>
+                <p class="text-slate-700 mb-4">
+                    To ensure quality and trackability, we manage new resource suggestions directly through our GitHub repository's issue tracker.
+                </p>
+                <ol class="list-decimal list-inside text-slate-600 space-y-2 mb-6">
+                    <li>Click the button below to go to our GitHub Issues page.</li>
+                    <li>Click "New Issue" and select the "Suggest a New Resource" template.</li>
+                    <li>Fill in the details (Course Name, Provider, Link, Key Topics, Credential Type, etc.).</li>
+                    <li>Submit the issue! Our team will review it and add it to the explorer.</li>
+                </ol>
+                <a href="https://github.com/balavenkatesh3322/free-ai-certification/issues/new?assignees=&labels=new+resource&projects=&template=new-resource-suggestion.md&title=New+Free+AI+Resource%3A+" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition-colors">
+                    Suggest New Resource on GitHub 🚀
+                </a>
+            </div>
+        </section>
+
+        <!-- Join Discussion Section -->
+        <section id="community-discussion" class="mb-16 p-8 bg-white rounded-xl shadow-md card">
+            <h3 class="text-3xl font-bold text-slate-900 mb-8 text-center section-heading">Join the Discussion</h3>
+            <p class="text-lg text-slate-700 mb-8 text-center">
+                Have questions about a learning path? Want to share your learning journey or discuss the latest AI trends? Connect with the community!
+            </p>
+            <div class="max-w-xl mx-auto bg-green-50 p-6 rounded-lg shadow-inner">
+                <h4 class="text-xl font-semibold text-green-800 mb-4">Connect with Fellow Learners:</h4>
+                <p class="text-slate-700 mb-4">
+                    We encourage open discussion and collaboration. Join our community channels to ask questions, share insights, and network.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="https://github.com/balavenkatesh3322/free-ai-certification/discussions" target="_blank" rel="noopener noreferrer" class="bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-green-700 transition-colors">
+                        GitHub Discussions 💬
+                    </a>
+                    <a href="https://discord.gg/your-discord-invite" target="_blank" rel="noopener noreferrer" class="bg-purple-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-purple-700 transition-colors">
+                        Join our Discord (Coming Soon!) 🗣️
+                    </a>
+                </div>
+                <p class="text-slate-600 text-sm mt-4">
+                    *(Note: Discord link is a placeholder. A dedicated Discord server will be set up based on community growth.)*
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-800 text-white py-12 mt-20">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="text-center md:text-left">
+                <h3 class="text-2xl font-bold text-blue-300 mb-4">Empower Your AI Journey</h3>
+                <p class="text-slate-300 text-sm">
+                    This platform is designed to be your trusted companion in navigating the world of free AI education. Explore, learn, and grow your expertise.
+                </p>
+            </div>
+            <div class="text-center md:text-left">
+                <h3 class="text-2xl font-bold text-blue-300 mb-4">Connect & Collaborate 🤝</h3>
+                <p class="text-slate-300 text-sm mb-4">
+                    Have a project idea? Looking for expertise in AI/ML or Data Science? Let's connect!
+                </p>
+                <a href="mailto:venkateshpnk22@gmail.com" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors">
+                    Contact for Projects 📧
+                </a>
+                <div class="mt-4">
+                    <h4 class="text-xl font-bold text-blue-300 mb-2">Unlock Exclusive Content!</h4>
+                    <p class="text-slate-300 text-sm mb-3">
+                        Subscribe for premium learning resources, advanced project guides, and early access to new features.
+                    </p>
+                    <a href="#" class="inline-block bg-green-500 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition-colors text-sm">
+                        Subscribe Now! ✨
+                    </a>
+                </div>
+            </div>
+            <div class="text-center md:text-right">
+                <h3 class="text-2xl font-bold text-blue-300 mb-4">About the Creator 👨‍💻</h3>
+                <p class="text-slate-300 text-sm mb-4">
+                    Driven by a passion for AI and open education. Connect with me:
+                </p>
+                <div class="flex justify-center md:justify-end space-x-4">
+                    <a href="https://www.linkedin.com/in/bala-venkatesh-67964247/" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-blue-200 transition-colors font-medium text-2xl">
+                        🔗
+                    </a>
+                    <a href="https://twitter.com/balavenkatesh3322" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-blue-200 transition-colors font-medium text-2xl">
+                        🐦
+                    </a>
+                    <a href="https://balavenkatesh3322.github.io/bala_venkatesh_profile/" target="_blank" rel="noopener noreferrer" class="inline-block text-blue-300 hover:text-blue-200 transition-colors font-medium text-2xl">
+                        🌐
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-slate-400 text-xs mt-10">
+            &copy; 2025 AI Certificate Explorer. All rights reserved. | <span id="last-updated-community"></span>
+        </div>
+    </footer>
+
+    <script>
+        // Set last updated date dynamically for this page
+        document.addEventListener('DOMContentLoaded', () => {
+            const lastUpdatedElement = document.getElementById('last-updated-community');
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            lastUpdatedElement.textContent = `Last Updated: ${today.toLocaleDateString('en-US', options)}`;
+
+            // Highlight active nav link based on current page
+            const navLinks = document.querySelectorAll('.nav-link');
+            const currentPage = window.location.pathname.split('/').pop(); 
+
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage || 
+                    (currentPage === 'learning_community.html' && (link.getAttribute('href').includes('community-contribute') || link.getAttribute('href').includes('community-discussion')))) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
